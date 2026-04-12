@@ -1,134 +1,131 @@
 "use client";
 
 import Link from "next/link";
-import { Section } from "@/components/ui/Section";
-import { Card } from "@/components/ui/Card";
-import { Badge } from "@/components/ui/Badge";
-import { Button } from "@/components/ui/Button";
-import { AnimateIn } from "@/components/ui/AnimateIn";
+import { motion } from "framer-motion";
+import { AnimateIn, StaggerContainer, StaggerItem } from "@/components/ui/AnimateIn";
 import { pricingTiers } from "@/data/pricing";
-import { CheckCircle2 } from "lucide-react";
+import { CheckCircle2, ArrowRight } from "lucide-react";
 import { CTA } from "@/components/sections/CTA";
 
 const faqs = [
-  {
-    q: "Is there a free trial?",
-    a: "Yes. Every plan includes a 14-day free trial with full access. No credit card required to start.",
-  },
-  {
-    q: "Can I switch plans later?",
-    a: "Absolutely. Upgrade or downgrade at any time. Changes take effect at the start of your next billing cycle.",
-  },
-  {
-    q: "What happens to my data if I cancel?",
-    a: "Your data is retained for 90 days after cancellation. You can export everything at any time via the built-in data export tool.",
-  },
-  {
-    q: "Do you offer annual billing?",
-    a: "Yes. Annual plans save 20% compared to monthly billing. Contact sales for annual pricing on Enterprise plans.",
-  },
-  {
-    q: "Is onboarding included?",
-    a: "Professional plans include guided onboarding. Enterprise plans include a dedicated account manager and custom training for your team.",
-  },
-  {
-    q: "How is multi-location pricing handled?",
-    a: "Multi-location companies use the Enterprise plan. Pricing is based on the number of locations and users. Contact sales for a custom quote.",
-  },
+  { q: "Is there a free trial?", a: "Every plan includes a 14-day free trial with full access. No credit card required." },
+  { q: "Can I switch plans later?", a: "Upgrade or downgrade at any time. Changes take effect at the start of your next billing cycle." },
+  { q: "What happens to my data if I cancel?", a: "Your data is retained for 90 days after cancellation. Export everything at any time." },
+  { q: "Do you offer annual billing?", a: "Annual plans save 20% compared to monthly billing. Contact sales for Enterprise annual pricing." },
+  { q: "Is onboarding included?", a: "Professional includes guided onboarding. Enterprise includes a dedicated account manager and custom training." },
+  { q: "How is multi-location pricing handled?", a: "Multi-location companies use the Enterprise plan with custom pricing based on locations and users." },
 ];
 
 export function PricingContent() {
   return (
     <>
-      <section className="pt-28 pb-16 md:pt-40 md:pb-20">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      {/* Hero */}
+      <section className="pt-32 pb-8 md:pt-44 md:pb-12">
+        <div className="mx-auto max-w-7xl px-5 sm:px-8">
           <AnimateIn>
-            <div className="text-center max-w-3xl mx-auto">
-              <Badge variant="primary" className="mb-4">
+            <div className="text-center max-w-2xl mx-auto">
+              <p className="text-sm font-semibold text-primary uppercase tracking-wider">
                 Simple Pricing
-              </Badge>
-              <h1 className="text-4xl md:text-5xl font-bold tracking-tight">
-                One Platform, Three Plans
+              </p>
+              <h1 className="mt-3 text-4xl md:text-5xl font-bold tracking-tight leading-tight">
+                One platform, three plans
               </h1>
-              <p className="mt-4 text-lg text-muted-foreground">
+              <p className="mt-4 text-lg text-slate-600">
                 No per-feature add-ons. No surprise charges. Pick the plan that
-                fits your team size and start your 14-day free trial today.
+                fits your team and start your 14-day free trial.
               </p>
             </div>
           </AnimateIn>
+        </div>
+      </section>
 
-          <div className="mt-16 grid md:grid-cols-3 gap-8 items-start">
+      {/* Pricing cards */}
+      <section className="py-16">
+        <div className="mx-auto max-w-6xl px-5 sm:px-8">
+          <div className="grid md:grid-cols-3 gap-6 items-start">
             {pricingTiers.map((tier, i) => (
-              <AnimateIn key={tier.name} delay={i * 0.1}>
-                <Card
-                  className={`relative h-full ${
+              <AnimateIn key={tier.name} delay={i * 0.12} direction="scale">
+                <motion.div
+                  className={`relative rounded-2xl border p-7 h-full ${
                     tier.popular
-                      ? "border-primary shadow-lg shadow-primary/10 ring-1 ring-primary"
-                      : ""
+                      ? "border-primary bg-white shadow-xl shadow-amber-500/10 ring-2 ring-primary"
+                      : "border-slate-200 bg-white shadow-sm"
                   }`}
+                  whileHover={{ y: -6 }}
+                  transition={{ type: "spring", stiffness: 200, damping: 15 }}
                 >
                   {tier.popular && (
                     <div className="absolute -top-3 left-1/2 -translate-x-1/2">
-                      <Badge variant="primary">Most Popular</Badge>
+                      <span className="px-4 py-1 bg-primary text-white text-xs font-semibold rounded-full">
+                        Most Popular
+                      </span>
                     </div>
                   )}
                   <div className="text-center pt-2">
-                    <h3 className="text-xl font-bold">{tier.name}</h3>
-                    <p className="mt-1 text-sm text-muted-foreground">
-                      {tier.description}
-                    </p>
-                    <div className="mt-4">
+                    <h3 className="text-lg font-bold">{tier.name}</h3>
+                    <p className="mt-1 text-sm text-slate-500">{tier.description}</p>
+                    <div className="mt-5">
                       <span className="text-4xl font-bold">{tier.price}</span>
-                      <span className="text-muted-foreground">
-                        {tier.period}
-                      </span>
+                      {tier.period && (
+                        <span className="text-slate-400 text-sm">{tier.period}</span>
+                      )}
                     </div>
                   </div>
-                  <ul className="mt-6 space-y-3">
+                  <ul className="mt-7 space-y-3">
                     {tier.features.map((feature) => (
-                      <li
-                        key={feature}
-                        className="flex items-start gap-2 text-sm"
-                      >
+                      <li key={feature} className="flex items-start gap-2.5 text-sm">
                         <CheckCircle2 className="h-4 w-4 text-green-500 mt-0.5 shrink-0" />
-                        <span>{feature}</span>
+                        <span className="text-slate-600">{feature}</span>
                       </li>
                     ))}
                   </ul>
                   <div className="mt-8">
                     <Link href="/demo">
-                      <Button
-                        variant={tier.popular ? "primary" : "outline"}
-                        className="w-full"
+                      <motion.span
+                        className={`w-full inline-flex items-center justify-center gap-2 px-6 py-3 font-semibold rounded-full text-sm cursor-pointer ${
+                          tier.popular
+                            ? "bg-primary text-white shadow-lg shadow-amber-500/20"
+                            : "bg-slate-100 text-slate-700 hover:bg-slate-200"
+                        } transition-colors`}
+                        whileHover={{ scale: 1.03 }}
+                        whileTap={{ scale: 0.97 }}
                       >
                         {tier.cta}
-                      </Button>
+                        <ArrowRight className="h-4 w-4" />
+                      </motion.span>
                     </Link>
                   </div>
-                </Card>
+                </motion.div>
               </AnimateIn>
             ))}
           </div>
         </div>
       </section>
 
-      <Section variant="muted">
-        <AnimateIn>
-          <h2 className="text-2xl md:text-3xl font-bold text-center mb-10">
-            Frequently Asked Questions
-          </h2>
-        </AnimateIn>
-        <div className="max-w-3xl mx-auto grid gap-6">
-          {faqs.map((faq, i) => (
-            <AnimateIn key={faq.q} delay={i * 0.05}>
-              <div className="bg-background rounded-lg border border-border p-6">
-                <h3 className="font-semibold">{faq.q}</h3>
-                <p className="mt-2 text-sm text-muted-foreground">{faq.a}</p>
-              </div>
-            </AnimateIn>
-          ))}
+      {/* FAQ */}
+      <section className="py-20 bg-slate-50">
+        <div className="mx-auto max-w-3xl px-5 sm:px-8">
+          <AnimateIn>
+            <h2 className="text-2xl md:text-3xl font-bold text-center mb-12">
+              Frequently asked questions
+            </h2>
+          </AnimateIn>
+          <StaggerContainer className="space-y-4" staggerDelay={0.06}>
+            {faqs.map((faq) => (
+              <StaggerItem key={faq.q}>
+                <motion.div
+                  className="bg-white rounded-xl border border-slate-100 p-6 shadow-sm"
+                  whileHover={{ x: 4 }}
+                  transition={{ duration: 0.2 }}
+                >
+                  <h3 className="font-semibold text-slate-800">{faq.q}</h3>
+                  <p className="mt-2 text-sm text-slate-500 leading-relaxed">{faq.a}</p>
+                </motion.div>
+              </StaggerItem>
+            ))}
+          </StaggerContainer>
         </div>
-      </Section>
+      </section>
 
       <CTA />
     </>

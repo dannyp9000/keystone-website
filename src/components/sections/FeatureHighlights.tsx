@@ -1,8 +1,9 @@
 "use client";
 
-import { Section } from "@/components/ui/Section";
+import Image from "next/image";
+import { motion } from "framer-motion";
+import { AnimateIn, StaggerContainer, StaggerItem } from "@/components/ui/AnimateIn";
 import { Card } from "@/components/ui/Card";
-import { AnimateIn } from "@/components/ui/AnimateIn";
 import {
   Brain,
   ClipboardCheck,
@@ -17,85 +18,110 @@ const highlights = [
     icon: Brain,
     title: "Knox AI Assistant",
     description:
-      "Your AI-powered co-pilot on every page. Create jobs, update statuses, analyze photos, and surface insights through natural language or 32 slash commands.",
-    gradient: "from-purple-500/10 to-pink-500/10",
-    iconColor: "text-purple-500",
+      "Your AI co-pilot on every page. Create jobs, update statuses, analyze photos, and get insights through natural language or 32 slash commands.",
+    color: "bg-purple-50 text-purple-600",
   },
   {
     icon: ClipboardCheck,
     title: "10-Stage Pipeline",
     description:
-      "Drag-and-drop Kanban, table, and card views. Custom stages with target days, color coding, and stalled job detection that flags bottlenecks before they cost you money.",
-    gradient: "from-blue-500/10 to-cyan-500/10",
-    iconColor: "text-blue-500",
+      "Drag-and-drop Kanban, table, and card views. Custom stages with target days and automatic stalled job detection.",
+    color: "bg-blue-50 text-blue-600",
   },
   {
     icon: Camera,
     title: "Key Cam Photos",
     description:
-      "Job-organized photo documentation that replaces CompanyCam. Folder hierarchies, GPS tagging, public galleries, commenting, and one-click migration from CompanyCam.",
-    gradient: "from-green-500/10 to-emerald-500/10",
-    iconColor: "text-green-500",
+      "A complete CompanyCam replacement. Job-organized folders, GPS tagging, public galleries, and one-click migration.",
+    color: "bg-green-50 text-green-600",
   },
   {
     icon: PenTool,
     title: "E-Signature Contracts",
     description:
-      "Generate contracts from templates, send for signing via email, and capture legally binding signatures. Customers sign on their phone — you schedule the job immediately.",
-    gradient: "from-amber-500/10 to-orange-500/10",
-    iconColor: "text-amber-500",
+      "Generate from templates, send for signing via email, capture legally binding signatures. Customers sign on their phone.",
+    color: "bg-amber-50 text-amber-600",
   },
   {
     icon: HardHat,
-    title: "Crew & Sales Portals",
+    title: "Crew and Sales Portals",
     description:
-      "Purpose-built mobile interfaces for field crews and sales reps. GPS time tracking, work orders, cold-call mapping, and inspection tools — all in a simplified portal.",
-    gradient: "from-red-500/10 to-rose-500/10",
-    iconColor: "text-red-500",
+      "Purpose-built mobile interfaces for field crews and sales reps. GPS time tracking, work orders, and cold-call mapping.",
+    color: "bg-red-50 text-red-600",
   },
   {
     icon: DollarSign,
-    title: "Complete Financial Cycle",
+    title: "Revenue Cycle",
     description:
-      "Multi-option estimates, e-signature contracts, invoicing with partial payments, expense tracking, and sales commissions. The full revenue cycle in one flow.",
-    gradient: "from-teal-500/10 to-cyan-500/10",
-    iconColor: "text-teal-500",
+      "Multi-option estimates, contracts, invoicing with partial payments, expense tracking, and sales commissions in one flow.",
+    color: "bg-teal-50 text-teal-600",
   },
 ];
 
 export function FeatureHighlights() {
   return (
-    <Section variant="muted">
-      <AnimateIn>
-        <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold">
-            Everything You Need to Close More Jobs, Faster
-          </h2>
-          <p className="mt-4 text-lg text-muted-foreground max-w-2xl mx-auto">
-            Stop switching between five different apps. Keystone OS manages
-            your CRM, estimates, contracts, crews, photos, and finances in one
-            place — with AI that actually understands roofing.
-          </p>
-        </div>
-      </AnimateIn>
-
-      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {highlights.map((feature, i) => (
-          <AnimateIn key={feature.title} delay={i * 0.1}>
-            <Card hover className="h-full">
-              <div
-                className={`inline-flex items-center justify-center w-12 h-12 rounded-lg bg-gradient-to-br ${feature.gradient} mb-4`}
-              >
-                <feature.icon className={`h-6 w-6 ${feature.iconColor}`} />
+    <section className="py-24 md:py-32">
+      <div className="mx-auto max-w-7xl px-5 sm:px-8">
+        <div className="grid lg:grid-cols-2 gap-16 items-center">
+          {/* Left: image */}
+          <AnimateIn direction="left">
+            <div className="relative">
+              <div className="relative rounded-2xl overflow-hidden shadow-2xl">
+                <Image
+                  src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&q=80"
+                  alt="Aerial view of residential rooftops"
+                  width={800}
+                  height={600}
+                  className="w-full h-auto"
+                  unoptimized
+                />
               </div>
-              <h3 className="text-lg font-semibold mb-2">{feature.title}</h3>
-              <p className="text-muted-foreground text-sm leading-relaxed">
-                {feature.description}
-              </p>
-            </Card>
+              {/* Floating stat card */}
+              <motion.div
+                className="absolute -bottom-6 -right-6 bg-white rounded-xl shadow-xl p-4 border border-slate-100"
+                animate={{ y: [-5, 5, -5] }}
+                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+              >
+                <p className="text-2xl font-bold text-primary">4 Portals</p>
+                <p className="text-xs text-slate-500">Purpose-built per role</p>
+              </motion.div>
+            </div>
           </AnimateIn>
-        ))}
+
+          {/* Right: content */}
+          <div>
+            <AnimateIn direction="right">
+              <p className="text-sm font-semibold text-primary uppercase tracking-wider">
+                All-in-one platform
+              </p>
+              <h2 className="mt-3 text-3xl md:text-4xl font-bold leading-tight">
+                Everything you need to close more jobs, faster
+              </h2>
+              <p className="mt-4 text-slate-600 leading-relaxed">
+                Stop switching between five different apps. Keystone OS manages
+                your CRM, estimates, contracts, crews, photos, and finances in
+                one place.
+              </p>
+            </AnimateIn>
+
+            <StaggerContainer className="mt-10 grid sm:grid-cols-2 gap-4" staggerDelay={0.08}>
+              {highlights.map((feature) => (
+                <StaggerItem key={feature.title}>
+                  <Card hover glow>
+                    <div className={`inline-flex items-center justify-center w-10 h-10 rounded-xl ${feature.color} mb-3`}>
+                      <feature.icon className="h-5 w-5" />
+                    </div>
+                    <h3 className="text-sm font-semibold mb-1">{feature.title}</h3>
+                    <p className="text-xs text-slate-500 leading-relaxed">
+                      {feature.description}
+                    </p>
+                  </Card>
+                </StaggerItem>
+              ))}
+            </StaggerContainer>
+          </div>
+        </div>
       </div>
-    </Section>
+    </section>
   );
 }

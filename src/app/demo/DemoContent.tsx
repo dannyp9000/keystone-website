@@ -1,20 +1,12 @@
 "use client";
 
+import Image from "next/image";
 import { useForm } from "react-hook-form";
-import { Section } from "@/components/ui/Section";
-import { Card } from "@/components/ui/Card";
-import { Badge } from "@/components/ui/Badge";
-import { Button } from "@/components/ui/Button";
+import { motion } from "framer-motion";
+import { AnimateIn, StaggerContainer, StaggerItem } from "@/components/ui/AnimateIn";
 import { Input } from "@/components/ui/Input";
 import { Textarea } from "@/components/ui/Textarea";
-import { AnimateIn } from "@/components/ui/AnimateIn";
-import {
-  CheckCircle2,
-  Clock,
-  Users,
-  Monitor,
-  ArrowRight,
-} from "lucide-react";
+import { CheckCircle2, ArrowRight, Clock, Monitor, Users } from "lucide-react";
 
 interface DemoForm {
   name: string;
@@ -25,71 +17,65 @@ interface DemoForm {
   message: string;
 }
 
-const benefits = [
-  {
-    icon: Clock,
-    title: "30 Minutes",
-    description: "Quick, focused walkthrough tailored to your business.",
-  },
-  {
-    icon: Monitor,
-    title: "Live Platform Demo",
-    description: "See real features, not a slide deck.",
-  },
-  {
-    icon: Users,
-    title: "Custom for Your Role",
-    description: "Owner, sales, production — we show what matters to you.",
-  },
+const demoItems = [
+  "Complete CRM-to-invoice revenue cycle",
+  "Knox AI creating jobs and scheduling in real time",
+  "Multi-option estimate builder with Conklin products",
+  "E-signature contract flow from generation to signing",
+  "Crew portal with GPS time tracking",
+  "Key Cam photo documentation and public galleries",
+  "Dashboard widgets and pipeline analytics",
+  "Multi-location HQ portal",
 ];
 
 export function DemoContent() {
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm<DemoForm>();
-
+  const { register, handleSubmit, formState: { errors } } = useForm<DemoForm>();
   const onSubmit = (data: DemoForm) => {
-    console.log("Demo form submitted:", data);
-    alert(
-      "Thank you! We'll reach out within 24 hours to schedule your demo."
-    );
+    console.log("Demo form:", data);
+    alert("Thank you. We will reach out within 24 hours to schedule your demo.");
   };
 
   return (
     <>
-      <section className="pt-28 pb-16 md:pt-40 md:pb-20 relative">
-        <div className="absolute inset-0 bg-gradient-to-br from-amber-50/50 via-white to-slate-50 -z-10" />
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      {/* Hero */}
+      <section className="relative pt-32 pb-20 md:pt-44 md:pb-28 overflow-hidden">
+        <div className="absolute inset-0 -z-10">
+          <Image
+            src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1600&q=80"
+            alt=""
+            fill
+            className="object-cover"
+            unoptimized
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-slate-900/95 to-slate-900/70" />
+        </div>
+        <div className="mx-auto max-w-7xl px-5 sm:px-8">
           <AnimateIn>
-            <div className="text-center max-w-3xl mx-auto">
-              <Badge variant="primary" className="mb-4">
+            <div className="max-w-2xl">
+              <p className="text-sm font-semibold text-amber-400 uppercase tracking-wider">
                 Free Demo
-              </Badge>
-              <h1 className="text-4xl md:text-5xl font-bold tracking-tight">
-                See Keystone OS in Action
+              </p>
+              <h1 className="mt-4 text-4xl md:text-5xl font-bold text-white tracking-tight leading-tight">
+                See Keystone OS in action
               </h1>
-              <p className="mt-4 text-lg text-muted-foreground">
-                Get a personalized walkthrough of the platform from someone who
-                understands roofing operations. No pressure, no commitment.
+              <p className="mt-5 text-lg text-slate-300 leading-relaxed">
+                Get a personalized walkthrough from someone who understands roofing
+                operations. No pressure, no commitment.
               </p>
             </div>
           </AnimateIn>
 
-          <div className="mt-12 flex justify-center gap-8 flex-wrap">
-            {benefits.map((benefit, i) => (
-              <AnimateIn key={benefit.title} delay={i * 0.1}>
-                <div className="flex items-center gap-3 text-sm">
-                  <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center">
-                    <benefit.icon className="h-5 w-5 text-primary" />
-                  </div>
-                  <div>
-                    <p className="font-semibold">{benefit.title}</p>
-                    <p className="text-xs text-muted-foreground">
-                      {benefit.description}
-                    </p>
-                  </div>
+          {/* Quick info cards */}
+          <div className="flex flex-wrap gap-4 mt-10">
+            {[
+              { icon: Clock, label: "30 minutes" },
+              { icon: Monitor, label: "Live platform demo" },
+              { icon: Users, label: "Tailored to your role" },
+            ].map((item, i) => (
+              <AnimateIn key={item.label} delay={0.2 + i * 0.1}>
+                <div className="flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 backdrop-blur-sm border border-white/10">
+                  <item.icon className="h-4 w-4 text-amber-400" />
+                  <span className="text-sm text-white font-medium">{item.label}</span>
                 </div>
               </AnimateIn>
             ))}
@@ -97,118 +83,86 @@ export function DemoContent() {
         </div>
       </section>
 
-      <Section>
-        <div className="grid lg:grid-cols-2 gap-12 items-start">
-          <AnimateIn direction="left">
-            <Card className="shadow-lg">
-              <h2 className="text-xl font-semibold mb-6">
-                Request Your Demo
-              </h2>
-              <form
-                onSubmit={handleSubmit(onSubmit)}
-                className="space-y-5"
-                noValidate
-              >
-                <div className="grid sm:grid-cols-2 gap-5">
-                  <Input
-                    id="demo-name"
-                    label="Your Name"
-                    placeholder="John Smith"
-                    error={errors.name?.message}
-                    {...register("name", {
-                      required: "Name is required",
-                    })}
-                  />
-                  <Input
-                    id="demo-email"
-                    type="email"
-                    label="Email Address"
-                    placeholder="john@company.com"
-                    error={errors.email?.message}
-                    {...register("email", {
-                      required: "Email is required",
-                      pattern: {
-                        value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
-                        message: "Invalid email address",
-                      },
-                    })}
-                  />
-                </div>
-                <div className="grid sm:grid-cols-2 gap-5">
-                  <Input
-                    id="demo-company"
-                    label="Company Name"
-                    placeholder="Your Roofing Company"
-                    error={errors.company?.message}
-                    {...register("company", {
-                      required: "Company name is required",
-                    })}
-                  />
-                  <Input
-                    id="demo-phone"
-                    type="tel"
-                    label="Phone Number"
-                    placeholder="(555) 123-4567"
-                    {...register("phone")}
-                  />
-                </div>
-                <Input
-                  id="demo-crew-size"
-                  label="Team Size"
-                  placeholder="e.g., 5-10 employees"
-                  {...register("crewSize")}
-                />
-                <Textarea
-                  id="demo-message"
-                  label="What are you most interested in?"
-                  placeholder="Tell us about your current setup and what you'd like to see..."
-                  {...register("message")}
-                />
-                <Button type="submit" size="lg" className="w-full group">
-                  Request Demo
-                  <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
-                </Button>
-              </form>
-            </Card>
-          </AnimateIn>
-
-          <AnimateIn direction="right">
-            <div className="space-y-6">
-              <h2 className="text-2xl font-bold">
-                What You&apos;ll See in Your Demo
-              </h2>
-              <div className="space-y-4">
-                {[
-                  "Complete CRM-to-invoice revenue cycle",
-                  "Knox AI creating jobs and scheduling inspections in real time",
-                  "Multi-option estimate builder with Conklin product integration",
-                  "E-signature contract flow from generation to signing",
-                  "Crew portal with GPS time tracking and work orders",
-                  "Key Cam photo documentation and public galleries",
-                  "Dashboard widgets and pipeline analytics",
-                  "Multi-location HQ portal (Enterprise)",
-                ].map((item) => (
-                  <div key={item} className="flex items-start gap-3">
-                    <CheckCircle2 className="h-5 w-5 text-green-500 mt-0.5 shrink-0" />
-                    <span className="text-muted-foreground">{item}</span>
+      {/* Form and checklist */}
+      <section className="py-20 md:py-28">
+        <div className="mx-auto max-w-7xl px-5 sm:px-8">
+          <div className="grid lg:grid-cols-2 gap-12 items-start">
+            <AnimateIn direction="left">
+              <div className="bg-white rounded-2xl border border-slate-100 shadow-lg p-8 md:p-10">
+                <h2 className="text-xl font-bold mb-6">Request your demo</h2>
+                <form onSubmit={handleSubmit(onSubmit)} className="space-y-5" noValidate>
+                  <div className="grid sm:grid-cols-2 gap-5">
+                    <Input id="d-name" label="Your Name" placeholder="John Smith"
+                      error={errors.name?.message}
+                      {...register("name", { required: "Required" })} />
+                    <Input id="d-email" type="email" label="Email" placeholder="john@company.com"
+                      error={errors.email?.message}
+                      {...register("email", {
+                        required: "Required",
+                        pattern: { value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/, message: "Invalid email" },
+                      })} />
                   </div>
-                ))}
+                  <div className="grid sm:grid-cols-2 gap-5">
+                    <Input id="d-company" label="Company" placeholder="Your Roofing Company"
+                      error={errors.company?.message}
+                      {...register("company", { required: "Required" })} />
+                    <Input id="d-phone" type="tel" label="Phone" placeholder="(555) 123-4567"
+                      {...register("phone")} />
+                  </div>
+                  <Input id="d-crew" label="Team Size" placeholder="e.g. 5 to 10 employees"
+                    {...register("crewSize")} />
+                  <Textarea id="d-msg" label="What are you most interested in?"
+                    placeholder="Tell us about your current setup..."
+                    {...register("message")} />
+                  <motion.button
+                    type="submit"
+                    className="w-full inline-flex items-center justify-center gap-2 px-7 py-3.5 bg-primary text-white font-semibold rounded-full shadow-lg shadow-amber-500/20 cursor-pointer"
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
+                  >
+                    Request Demo
+                    <ArrowRight className="h-5 w-5" />
+                  </motion.button>
+                </form>
               </div>
+            </AnimateIn>
 
-              <div className="mt-8 p-6 bg-muted/50 rounded-xl border border-border">
-                <p className="text-sm text-muted-foreground italic">
-                  &ldquo;The demo sold us in 15 minutes. We saw our exact
-                  workflow — from storm damage lead to paid invoice — running in
-                  one system. We signed up that afternoon.&rdquo;
-                </p>
-                <p className="mt-3 text-sm font-semibold">
-                  — Travis McBride, Iron Shield Contracting
-                </p>
+            <AnimateIn direction="right">
+              <div>
+                <h2 className="text-2xl font-bold mb-8">What you will see</h2>
+                <StaggerContainer className="space-y-4" staggerDelay={0.06}>
+                  {demoItems.map((item) => (
+                    <StaggerItem key={item}>
+                      <motion.div
+                        className="flex items-start gap-3 p-3 rounded-xl hover:bg-slate-50 transition-colors"
+                        whileHover={{ x: 6 }}
+                        transition={{ duration: 0.2 }}
+                      >
+                        <CheckCircle2 className="h-5 w-5 text-green-500 mt-0.5 shrink-0" />
+                        <span className="text-slate-600">{item}</span>
+                      </motion.div>
+                    </StaggerItem>
+                  ))}
+                </StaggerContainer>
+
+                <AnimateIn delay={0.6}>
+                  <div className="mt-10 relative rounded-2xl overflow-hidden shadow-xl">
+                    <Image
+                      src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80"
+                      alt="Dashboard analytics"
+                      width={800}
+                      height={500}
+                      className="w-full h-auto"
+                      unoptimized
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
+                  </div>
+                </AnimateIn>
               </div>
-            </div>
-          </AnimateIn>
+            </AnimateIn>
+          </div>
         </div>
-      </Section>
+      </section>
     </>
   );
 }

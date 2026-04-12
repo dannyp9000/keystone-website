@@ -1,44 +1,53 @@
 "use client";
 
 import Link from "next/link";
-import { Button } from "@/components/ui/Button";
+import Image from "next/image";
+import { motion } from "framer-motion";
 import { AnimateIn } from "@/components/ui/AnimateIn";
 import { ArrowRight } from "lucide-react";
 
 export function CTA() {
   return (
-    <section className="relative py-20 md:py-28 overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-br from-amber-600 to-amber-700 -z-10" />
-      <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxnIGZpbGw9IiNmZmYiIGZpbGwtb3BhY2l0eT0iLjA1Ij48cGF0aCBkPSJNMzYgMzRoLTJ2LTRoLTR2LTJoNHYtNGgydjRoNHYyaC00djR6TTYgMzRIMHYtMkgydi00aDJ2NGgydjJINnYtNGgydjRoNHYySDh2NGgtMnYtNHptMC0zMEg0di0yaDJ2LTRoMnY0aDJ2MkgwdjRIMnYtNHptMzAgMGgtMnYtNGgtNHYtMmg0di00aDJ2NGg0djJoLTR2NHoiLz48L2c+PC9nPjwvc3ZnPg==')] -z-10" />
+    <section className="relative py-24 md:py-32 overflow-hidden">
+      <div className="absolute inset-0 -z-10">
+        <Image
+          src="https://images.unsplash.com/photo-1621905252507-b35492cc74b4?w=1600&q=80"
+          alt=""
+          fill
+          className="object-cover"
+          unoptimized
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-slate-900/95 to-slate-900/80" />
+      </div>
 
-      <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 text-center">
+      <div className="mx-auto max-w-4xl px-5 sm:px-8 text-center">
         <AnimateIn>
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white">
-            Stop Duct-Taping Your Business Together
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-tight">
+            Stop duct-taping your business together
           </h2>
-          <p className="mt-4 text-lg text-amber-100 max-w-2xl mx-auto leading-relaxed">
-            Your competitors are still juggling spreadsheets, three different
-            apps, and a whiteboard. Give your team the platform that runs
-            circles around all of it.
+          <p className="mt-5 text-lg text-slate-300 max-w-xl mx-auto leading-relaxed">
+            Your competitors are still juggling spreadsheets and three different apps.
+            Give your team the platform that runs circles around all of it.
           </p>
-          <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
+          <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
             <Link href="/demo">
-              <Button
-                size="lg"
-                className="bg-white text-amber-700 hover:bg-amber-50 shadow-lg group"
+              <motion.span
+                className="inline-flex items-center gap-2 px-8 py-4 bg-primary text-white font-semibold rounded-full shadow-xl shadow-amber-500/25 cursor-pointer"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
               >
-                Request Your Free Demo
-                <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
-              </Button>
+                Start Your Free Trial
+                <ArrowRight className="h-5 w-5" />
+              </motion.span>
             </Link>
             <Link href="/pricing">
-              <Button
-                size="lg"
-                variant="ghost"
-                className="text-white border-2 border-white/30 hover:bg-white/10"
+              <motion.span
+                className="inline-flex items-center gap-2 px-8 py-4 text-white font-medium rounded-full border border-white/20 hover:bg-white/10 transition-colors cursor-pointer"
+                whileHover={{ scale: 1.03 }}
+                whileTap={{ scale: 0.97 }}
               >
                 View Pricing
-              </Button>
+              </motion.span>
             </Link>
           </div>
         </AnimateIn>

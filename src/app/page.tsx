@@ -3,6 +3,7 @@ import { Stats } from "@/components/sections/Stats";
 import { FeatureHighlights } from "@/components/sections/FeatureHighlights";
 import { Pipeline } from "@/components/sections/Pipeline";
 import { KnoxAI } from "@/components/sections/KnoxAI";
+import { Showcase } from "@/components/sections/Showcase";
 import { Competitors } from "@/components/sections/Competitors";
 import { Testimonials } from "@/components/sections/Testimonials";
 import { CTA } from "@/components/sections/CTA";
@@ -13,6 +14,7 @@ export default function Home() {
       <Hero />
       <Stats />
       <FeatureHighlights />
+      <Showcase />
       <Pipeline />
       <KnoxAI />
       <Competitors />

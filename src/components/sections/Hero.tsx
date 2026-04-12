@@ -1,138 +1,109 @@
 "use client";
 
 import Link from "next/link";
-import { Button } from "@/components/ui/Button";
-import { Badge } from "@/components/ui/Badge";
+import Image from "next/image";
+import { motion } from "framer-motion";
 import { AnimateIn } from "@/components/ui/AnimateIn";
-import {
-  Shield,
-  Zap,
-  Users,
-  ArrowRight,
-  CheckCircle2,
-} from "lucide-react";
+import { ArrowRight, Play } from "lucide-react";
 
 export function Hero() {
   return (
-    <section className="relative overflow-hidden pt-28 pb-20 md:pt-40 md:pb-32">
-      {/* Background gradient */}
-      <div className="absolute inset-0 bg-gradient-to-br from-amber-50/50 via-white to-slate-50 -z-10" />
-      <div className="absolute top-0 right-0 w-1/2 h-1/2 bg-gradient-to-bl from-amber-100/30 to-transparent rounded-bl-[100px] -z-10" />
+    <section className="relative min-h-screen flex items-center overflow-hidden">
+      {/* Background image */}
+      <div className="absolute inset-0 -z-20">
+        <Image
+          src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1920&q=80"
+          alt=""
+          fill
+          className="object-cover"
+          priority
+          unoptimized
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-slate-900/95 via-slate-900/80 to-slate-900/60" />
+      </div>
 
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="max-w-4xl mx-auto text-center">
-          <AnimateIn delay={0}>
-            <Badge variant="primary" className="mb-6">
-              Now in v1.40 — Feature-Complete for MVP
-            </Badge>
-          </AnimateIn>
+      {/* Floating shapes */}
+      <motion.div
+        className="absolute top-1/4 right-1/4 w-64 h-64 rounded-full bg-amber-500/10 blur-3xl -z-10"
+        animate={{ y: [-20, 20, -20], x: [-10, 10, -10] }}
+        transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+      />
+      <motion.div
+        className="absolute bottom-1/3 left-1/3 w-48 h-48 rounded-full bg-amber-600/10 blur-3xl -z-10"
+        animate={{ y: [15, -15, 15] }}
+        transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+      />
 
+      <div className="mx-auto max-w-7xl px-5 sm:px-8 py-32 md:py-40">
+        <div className="max-w-2xl">
           <AnimateIn delay={0.1}>
-            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight leading-[1.1]">
-              The Operating System for{" "}
-              <span className="bg-gradient-to-r from-amber-600 to-amber-500 bg-clip-text text-transparent">
-                Roofing Contractors
-              </span>
-            </h1>
+            <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-sm border border-white/10 text-amber-300 text-sm font-medium">
+              <span className="w-2 h-2 rounded-full bg-amber-400 animate-pulse" />
+              v1.40 Now Available
+            </span>
           </AnimateIn>
 
           <AnimateIn delay={0.2}>
-            <p className="mt-6 text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-              Replace your fragmented stack of CRM, estimating, scheduling, and
-              photo tools with one AI-powered platform built exclusively for
-              roofing companies. From lead capture to warranty service — run
-              your entire business in Keystone OS.
+            <h1 className="mt-8 text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-[1.05] tracking-tight">
+              Run your roofing
+              <br />
+              business in
+              <br />
+              <span className="text-amber-400">one place</span>
+            </h1>
+          </AnimateIn>
+
+          <AnimateIn delay={0.35}>
+            <p className="mt-6 text-lg text-slate-300 leading-relaxed max-w-lg">
+              CRM, estimates, contracts, crew management, photo documentation,
+              and AI assistance. Everything a roofing contractor needs, nothing they do not.
             </p>
           </AnimateIn>
 
-          <AnimateIn delay={0.3}>
-            <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
+          <AnimateIn delay={0.5}>
+            <div className="mt-10 flex flex-wrap items-center gap-4">
               <Link href="/demo">
-                <Button size="lg" className="group">
-                  Request a Demo
-                  <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
-                </Button>
+                <motion.span
+                  className="inline-flex items-center gap-2 px-7 py-3.5 bg-primary text-white font-semibold rounded-full shadow-xl shadow-amber-500/25 cursor-pointer"
+                  whileHover={{ scale: 1.04, boxShadow: "0 20px 40px rgba(217,119,6,0.3)" }}
+                  whileTap={{ scale: 0.96 }}
+                >
+                  Start Free Trial
+                  <ArrowRight className="h-5 w-5" />
+                </motion.span>
               </Link>
               <Link href="/features">
-                <Button variant="outline" size="lg">
-                  Explore Features
-                </Button>
+                <motion.span
+                  className="inline-flex items-center gap-2 px-7 py-3.5 text-white font-medium rounded-full border border-white/20 hover:bg-white/10 transition-colors cursor-pointer"
+                  whileHover={{ scale: 1.03 }}
+                  whileTap={{ scale: 0.97 }}
+                >
+                  <Play className="h-4 w-4 fill-white" />
+                  See How It Works
+                </motion.span>
               </Link>
             </div>
           </AnimateIn>
 
-          <AnimateIn delay={0.4}>
-            <div className="mt-10 flex flex-wrap items-center justify-center gap-x-8 gap-y-3 text-sm text-muted-foreground">
-              <span className="flex items-center gap-2">
-                <CheckCircle2 className="h-4 w-4 text-green-500" />
-                14-day free trial
-              </span>
-              <span className="flex items-center gap-2">
-                <CheckCircle2 className="h-4 w-4 text-green-500" />
-                No credit card required
-              </span>
-              <span className="flex items-center gap-2">
-                <CheckCircle2 className="h-4 w-4 text-green-500" />
-                Setup in under 10 minutes
-              </span>
+          <AnimateIn delay={0.65}>
+            <div className="mt-14 flex items-center gap-8">
+              <div>
+                <p className="text-3xl font-bold text-white">89</p>
+                <p className="text-xs text-slate-400 mt-0.5">Database Tables</p>
+              </div>
+              <div className="w-px h-10 bg-white/10" />
+              <div>
+                <p className="text-3xl font-bold text-white">310</p>
+                <p className="text-xs text-slate-400 mt-0.5">Security Policies</p>
+              </div>
+              <div className="w-px h-10 bg-white/10" />
+              <div>
+                <p className="text-3xl font-bold text-white">21</p>
+                <p className="text-xs text-slate-400 mt-0.5">Modules</p>
+              </div>
             </div>
           </AnimateIn>
         </div>
-
-        {/* App preview placeholder */}
-        <AnimateIn delay={0.5}>
-          <div className="mt-16 md:mt-20 relative">
-            <div className="mx-auto max-w-5xl rounded-xl border border-border bg-gradient-to-br from-slate-900 to-slate-800 shadow-2xl overflow-hidden">
-              <div className="flex items-center gap-2 px-4 py-3 border-b border-slate-700">
-                <div className="flex gap-1.5">
-                  <div className="w-3 h-3 rounded-full bg-red-400" />
-                  <div className="w-3 h-3 rounded-full bg-yellow-400" />
-                  <div className="w-3 h-3 rounded-full bg-green-400" />
-                </div>
-                <div className="flex-1 text-center">
-                  <span className="text-xs text-slate-400">keystones.lovable.app</span>
-                </div>
-              </div>
-              <div className="p-8 md:p-12 space-y-6">
-                {/* Dashboard mockup */}
-                <div className="grid grid-cols-3 gap-4">
-                  {[
-                    { icon: Shield, label: "Active Jobs", value: "47", color: "text-amber-400" },
-                    { icon: Zap, label: "Revenue (MTD)", value: "$284K", color: "text-green-400" },
-                    { icon: Users, label: "Crew Members", value: "23", color: "text-blue-400" },
-                  ].map((stat) => (
-                    <div
-                      key={stat.label}
-                      className="bg-slate-800/50 rounded-lg p-4 border border-slate-700"
-                    >
-                      <stat.icon className={`h-5 w-5 ${stat.color} mb-2`} />
-                      <p className="text-2xl font-bold text-white">{stat.value}</p>
-                      <p className="text-xs text-slate-400">{stat.label}</p>
-                    </div>
-                  ))}
-                </div>
-                {/* Pipeline stages */}
-                <div className="flex gap-2">
-                  {["Lead", "Inspection", "Estimate", "Contract", "Install", "Paid"].map(
-                    (stage, i) => (
-                      <div
-                        key={stage}
-                        className="flex-1 bg-slate-800/50 rounded-md p-2 border border-slate-700 text-center"
-                      >
-                        <p className="text-xs text-slate-400">{stage}</p>
-                        <p className="text-sm font-semibold text-white mt-1">
-                          {[12, 8, 6, 9, 4, 8][i]}
-                        </p>
-                      </div>
-                    )
-                  )}
-                </div>
-              </div>
-            </div>
-            {/* Glow effect */}
-            <div className="absolute -inset-4 bg-gradient-to-r from-amber-500/10 via-transparent to-amber-500/10 rounded-2xl blur-3xl -z-10" />
-          </div>
-        </AnimateIn>
       </div>
     </section>
   );
