@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import Image from "next/image";
 import { useForm } from "react-hook-form";
 import { motion } from "framer-motion";
@@ -29,10 +30,13 @@ const demoItems = [
 ];
 
 export function DemoContent() {
-  const { register, handleSubmit, formState: { errors } } = useForm<DemoForm>();
-  const onSubmit = (data: DemoForm) => {
-    console.log("Demo form:", data);
-    alert("Thank you. We will reach out within 24 hours to schedule your demo.");
+  const { register, handleSubmit, formState: { errors }, reset } = useForm<DemoForm>();
+  const [submitted, setSubmitted] = useState(false);
+
+  const onSubmit = (_data: DemoForm) => {
+    // TODO: Wire up to backend (Supabase, Resend, etc.)
+    setSubmitted(true);
+    reset();
   };
 
   return (
@@ -89,41 +93,63 @@ export function DemoContent() {
           <div className="grid lg:grid-cols-2 gap-12 items-start">
             <AnimateIn direction="left">
               <div className="bg-white rounded-2xl border border-slate-100 shadow-lg p-8 md:p-10">
-                <h2 className="text-xl font-bold mb-6">Request your demo</h2>
-                <form onSubmit={handleSubmit(onSubmit)} className="space-y-5" noValidate>
-                  <div className="grid sm:grid-cols-2 gap-5">
-                    <Input id="d-name" label="Your Name" placeholder="John Smith"
-                      error={errors.name?.message}
-                      {...register("name", { required: "Required" })} />
-                    <Input id="d-email" type="email" label="Email" placeholder="john@company.com"
-                      error={errors.email?.message}
-                      {...register("email", {
-                        required: "Required",
-                        pattern: { value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/, message: "Invalid email" },
-                      })} />
-                  </div>
-                  <div className="grid sm:grid-cols-2 gap-5">
-                    <Input id="d-company" label="Company" placeholder="Your Roofing Company"
-                      error={errors.company?.message}
-                      {...register("company", { required: "Required" })} />
-                    <Input id="d-phone" type="tel" label="Phone" placeholder="(555) 123-4567"
-                      {...register("phone")} />
-                  </div>
-                  <Input id="d-crew" label="Team Size" placeholder="How many people on your team?"
-                    {...register("crewSize")} />
-                  <Textarea id="d-msg" label="What would you like to see?"
-                    placeholder="Tell us about how you run things today..."
-                    {...register("message")} />
-                  <motion.button
-                    type="submit"
-                    className="w-full inline-flex items-center justify-center gap-2 px-7 py-3.5 bg-primary text-white font-semibold rounded-full shadow-lg shadow-amber-500/20 cursor-pointer"
-                    whileHover={{ scale: 1.02 }}
-                    whileTap={{ scale: 0.98 }}
+                {submitted ? (
+                  <motion.div
+                    className="text-center py-8"
+                    initial={{ opacity: 0, scale: 0.95 }}
+                    animate={{ opacity: 1, scale: 1 }}
                   >
-                    Request Demo
-                    <ArrowRight className="h-5 w-5" />
-                  </motion.button>
-                </form>
+                    <div className="mx-auto w-14 h-14 rounded-full bg-green-50 flex items-center justify-center mb-4">
+                      <CheckCircle2 className="h-6 w-6 text-green-500" />
+                    </div>
+                    <h2 className="text-xl font-bold">Demo request received</h2>
+                    <p className="mt-2 text-sm text-slate-500">We will reach out within 24 hours to schedule your walkthrough.</p>
+                    <button
+                      onClick={() => setSubmitted(false)}
+                      className="mt-6 text-sm text-primary font-medium hover:underline cursor-pointer"
+                    >
+                      Submit another request
+                    </button>
+                  </motion.div>
+                ) : (
+                  <>
+                    <h2 className="text-xl font-bold mb-6">Request your demo</h2>
+                    <form onSubmit={handleSubmit(onSubmit)} className="space-y-5" noValidate>
+                      <div className="grid sm:grid-cols-2 gap-5">
+                        <Input id="d-name" label="Your Name" placeholder="John Smith"
+                          error={errors.name?.message}
+                          {...register("name", { required: "Required" })} />
+                        <Input id="d-email" type="email" label="Email" placeholder="john@company.com"
+                          error={errors.email?.message}
+                          {...register("email", {
+                            required: "Required",
+                            pattern: { value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/, message: "Invalid email" },
+                          })} />
+                      </div>
+                      <div className="grid sm:grid-cols-2 gap-5">
+                        <Input id="d-company" label="Company" placeholder="Your Roofing Company"
+                          error={errors.company?.message}
+                          {...register("company", { required: "Required" })} />
+                        <Input id="d-phone" type="tel" label="Phone" placeholder="(555) 123-4567"
+                          {...register("phone")} />
+                      </div>
+                      <Input id="d-crew" label="Team Size" placeholder="How many people on your team?"
+                        {...register("crewSize")} />
+                      <Textarea id="d-msg" label="What would you like to see?"
+                        placeholder="Tell us about how you run things today..."
+                        {...register("message")} />
+                      <motion.button
+                        type="submit"
+                        className="w-full inline-flex items-center justify-center gap-2 px-7 py-3.5 bg-primary text-white font-semibold rounded-full shadow-lg shadow-amber-500/20 cursor-pointer"
+                        whileHover={{ scale: 1.02 }}
+                        whileTap={{ scale: 0.98 }}
+                      >
+                        Request Demo
+                        <ArrowRight className="h-5 w-5" />
+                      </motion.button>
+                    </form>
+                  </>
+                )}
               </div>
             </AnimateIn>
 

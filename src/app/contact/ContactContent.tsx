@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import Image from "next/image";
 import { useForm } from "react-hook-form";
 import { motion } from "framer-motion";
@@ -22,10 +23,13 @@ const contactInfo = [
 ];
 
 export function ContactContent() {
-  const { register, handleSubmit, formState: { errors } } = useForm<ContactForm>();
-  const onSubmit = (data: ContactForm) => {
-    console.log("Contact form:", data);
-    alert("Thank you. We will be in touch within 24 hours.");
+  const { register, handleSubmit, formState: { errors }, reset } = useForm<ContactForm>();
+  const [submitted, setSubmitted] = useState(false);
+
+  const onSubmit = (_data: ContactForm) => {
+    // TODO: Wire up to backend (Supabase, Resend, etc.)
+    setSubmitted(true);
+    reset();
   };
 
   return (
@@ -89,35 +93,57 @@ export function ContactContent() {
         <div className="mx-auto max-w-2xl px-5 sm:px-8">
           <AnimateIn>
             <div className="bg-white rounded-2xl border border-slate-100 shadow-sm p-8 md:p-10">
-              <h2 className="text-xl font-bold mb-2">Send us a message</h2>
-              <p className="text-sm text-slate-500 mb-6">Fill out the form below and we will get back to you quickly.</p>
-              <form onSubmit={handleSubmit(onSubmit)} className="space-y-5" noValidate>
-                <div className="grid sm:grid-cols-2 gap-5">
-                  <Input id="name" label="Your Name" placeholder="John Smith"
-                    error={errors.name?.message}
-                    {...register("name", { required: "Name is required" })} />
-                  <Input id="email" type="email" label="Email" placeholder="john@company.com"
-                    error={errors.email?.message}
-                    {...register("email", {
-                      required: "Email is required",
-                      pattern: { value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/, message: "Invalid email" },
-                    })} />
-                </div>
-                <Input id="company" label="Company" placeholder="Your Roofing Company"
-                  {...register("company")} />
-                <Textarea id="message" label="How can we help?" placeholder="Tell us what you are looking for..."
-                  error={errors.message?.message}
-                  {...register("message", { required: "Message is required" })} />
-                <motion.button
-                  type="submit"
-                  className="inline-flex items-center gap-2 px-7 py-3 bg-primary text-white font-semibold rounded-full shadow-lg shadow-amber-500/20 cursor-pointer"
-                  whileHover={{ scale: 1.03 }}
-                  whileTap={{ scale: 0.97 }}
+              {submitted ? (
+                <motion.div
+                  className="text-center py-8"
+                  initial={{ opacity: 0, scale: 0.95 }}
+                  animate={{ opacity: 1, scale: 1 }}
                 >
-                  Send Message
-                  <Send className="h-4 w-4" />
-                </motion.button>
-              </form>
+                  <div className="mx-auto w-14 h-14 rounded-full bg-green-50 flex items-center justify-center mb-4">
+                    <Send className="h-6 w-6 text-green-500" />
+                  </div>
+                  <h2 className="text-xl font-bold">Message sent</h2>
+                  <p className="mt-2 text-sm text-slate-500">We will get back to you within 24 hours.</p>
+                  <button
+                    onClick={() => setSubmitted(false)}
+                    className="mt-6 text-sm text-primary font-medium hover:underline cursor-pointer"
+                  >
+                    Send another message
+                  </button>
+                </motion.div>
+              ) : (
+                <>
+                  <h2 className="text-xl font-bold mb-2">Send us a message</h2>
+                  <p className="text-sm text-slate-500 mb-6">Fill out the form below and we will get back to you quickly.</p>
+                  <form onSubmit={handleSubmit(onSubmit)} className="space-y-5" noValidate>
+                    <div className="grid sm:grid-cols-2 gap-5">
+                      <Input id="name" label="Your Name" placeholder="John Smith"
+                        error={errors.name?.message}
+                        {...register("name", { required: "Name is required" })} />
+                      <Input id="email" type="email" label="Email" placeholder="john@company.com"
+                        error={errors.email?.message}
+                        {...register("email", {
+                          required: "Email is required",
+                          pattern: { value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/, message: "Invalid email" },
+                        })} />
+                    </div>
+                    <Input id="company" label="Company" placeholder="Your Roofing Company"
+                      {...register("company")} />
+                    <Textarea id="message" label="How can we help?" placeholder="Tell us what you are looking for..."
+                      error={errors.message?.message}
+                      {...register("message", { required: "Message is required" })} />
+                    <motion.button
+                      type="submit"
+                      className="inline-flex items-center gap-2 px-7 py-3 bg-primary text-white font-semibold rounded-full shadow-lg shadow-amber-500/20 cursor-pointer"
+                      whileHover={{ scale: 1.03 }}
+                      whileTap={{ scale: 0.97 }}
+                    >
+                      Send Message
+                      <Send className="h-4 w-4" />
+                    </motion.button>
+                  </form>
+                </>
+              )}
             </div>
           </AnimateIn>
         </div>
