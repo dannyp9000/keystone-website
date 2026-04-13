@@ -16,9 +16,9 @@ interface ContactForm {
 }
 
 const contactInfo = [
-  { icon: Mail, title: "Email", detail: "hello@keystoneos.com", sub: "Response within 24 hours" },
-  { icon: Phone, title: "Phone", detail: "(555) 123-4567", sub: "Mon to Fri, 8am to 6pm CST" },
-  { icon: MapPin, title: "Office", detail: "Dallas, Texas", sub: "Roofing country headquarters" },
+  { icon: Mail, title: "Email", detail: "hello@keystoneos.com", sub: "We reply within 24 hours" },
+  { icon: Phone, title: "Phone", detail: "(216) 555-0100", sub: "Monday to Friday, 8am to 6pm EST" },
+  { icon: MapPin, title: "Office", detail: "Cleveland, Ohio", sub: "Proudly built in the Midwest" },
 ];
 
 export function ContactContent() {
@@ -34,7 +34,7 @@ export function ContactContent() {
       <section className="relative pt-32 pb-20 md:pt-44 md:pb-28 overflow-hidden">
         <div className="absolute inset-0 -z-10">
           <Image
-            src="https://images.unsplash.com/photo-1423666639041-f56000c27a9a?w=1600&q=80"
+            src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=1600&q=80"
             alt=""
             fill
             className="object-cover"
@@ -49,11 +49,11 @@ export function ContactContent() {
                 Get in Touch
               </p>
               <h1 className="mt-4 text-4xl md:text-5xl font-bold text-white tracking-tight leading-tight">
-                Let us talk about your business
+                We would love to hear from you
               </h1>
               <p className="mt-5 text-lg text-slate-300 leading-relaxed">
-                Whether you are exploring Keystone OS for the first time or need
-                help with your account, we are here.
+                Have a question about Keystone OS? Want to see if it is a good fit
+                for your company? Drop us a line.
               </p>
             </div>
           </AnimateIn>
@@ -89,7 +89,8 @@ export function ContactContent() {
         <div className="mx-auto max-w-2xl px-5 sm:px-8">
           <AnimateIn>
             <div className="bg-white rounded-2xl border border-slate-100 shadow-sm p-8 md:p-10">
-              <h2 className="text-xl font-bold mb-6">Send us a message</h2>
+              <h2 className="text-xl font-bold mb-2">Send us a message</h2>
+              <p className="text-sm text-slate-500 mb-6">Fill out the form below and we will get back to you quickly.</p>
               <form onSubmit={handleSubmit(onSubmit)} className="space-y-5" noValidate>
                 <div className="grid sm:grid-cols-2 gap-5">
                   <Input id="name" label="Your Name" placeholder="John Smith"
@@ -104,7 +105,7 @@ export function ContactContent() {
                 </div>
                 <Input id="company" label="Company" placeholder="Your Roofing Company"
                   {...register("company")} />
-                <Textarea id="message" label="Message" placeholder="Tell us about your needs..."
+                <Textarea id="message" label="How can we help?" placeholder="Tell us what you are looking for..."
                   error={errors.message?.message}
                   {...register("message", { required: "Message is required" })} />
                 <motion.button

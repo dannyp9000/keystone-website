@@ -1,9 +1,7 @@
 import {
   Phone,
   Mail,
-  MapPin,
   Camera,
-  Ruler,
   Package,
   Brain,
   type LucideIcon,
@@ -14,64 +12,42 @@ export interface Integration {
   description: string;
   icon: LucideIcon;
   category: string;
-  status: "active" | "partial" | "coming-soon";
 }
 
 export const integrations: Integration[] = [
   {
     name: "Twilio",
     description:
-      "Call tracking, recording, AI transcription, SMS messaging, and phone number provisioning. Full professional phone system built right in.",
+      "Make and receive calls right from Keystone OS. Every call is tracked, recorded, and transcribed automatically. Send and receive text messages, set up auto-replies for missed calls, and manage your business phone numbers without switching apps. Your whole communication history stays linked to the right customer and job.",
     icon: Phone,
-    category: "Communications",
-    status: "active",
+    category: "Calls and Texting",
   },
   {
     name: "Resend",
     description:
-      "Transactional email delivery for estimates, contracts, invoices, and marketing campaigns with open and click tracking.",
+      "Send professional emails to customers automatically. Estimate links, contract signing requests, invoice reminders, and marketing campaigns all go out through Resend. You can track who opened your emails and who clicked. No need for a separate email marketing tool.",
     icon: Mail,
-    category: "Communications",
-    status: "active",
-  },
-  {
-    name: "Google Maps",
-    description:
-      "Satellite property imagery for inspections, GPS-based cold call mapping, and property location verification.",
-    icon: MapPin,
-    category: "Location & Mapping",
-    status: "active",
+    category: "Email Delivery",
   },
   {
     name: "CompanyCam",
     description:
-      "One-click migration of your entire photo library. Import projects, photos, and metadata directly into Key Cam.",
+      "Already using CompanyCam? Bring your entire photo library into Keystone OS with a one-click migration. All your projects, photos, and metadata come over automatically. Once you are in Keystone OS, your photos live right next to your jobs, estimates, and invoices so everything is connected.",
     icon: Camera,
-    category: "Photo Documentation",
-    status: "active",
+    category: "Photo Migration",
   },
   {
-    name: "EagleView",
+    name: "Conklin Products",
     description:
-      "Aerial roof measurement reports with automated data import. Facet counts, ridge lengths, valleys, waste factors — all imported automatically.",
-    icon: Ruler,
-    category: "Measurements",
-    status: "partial",
-  },
-  {
-    name: "Conklin",
-    description:
-      "Complete roofing product catalog with specifications, pricing, and coverage rates. Add products directly to estimates and purchase orders.",
+      "Access the complete Conklin roofing product catalog with specs, pricing, and coverage rates built right into your estimates. When you are building an estimate, pull in the exact products you need and the pricing fills in automatically. No more looking up prices on a separate website.",
     icon: Package,
-    category: "Suppliers",
-    status: "active",
+    category: "Roofing Supplies",
   },
   {
-    name: "AI Models (Knox)",
+    name: "AI Models",
     description:
-      "Powered by Gemini 2.5 Pro, Gemini Flash, GPT-5, and GPT-5-mini via Lovable AI Gateway. No API key required.",
+      "Knox, your built-in AI assistant, is powered by the latest AI models including Gemini and GPT. You do not need your own API key or any technical setup. Knox works out of the box and gets smarter over time. It handles job creation, scheduling, photo analysis, weather checks, and dozens of other tasks through simple conversation.",
     icon: Brain,
     category: "Artificial Intelligence",
-    status: "active",
   },
 ];

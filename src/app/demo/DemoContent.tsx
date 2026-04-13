@@ -18,14 +18,14 @@ interface DemoForm {
 }
 
 const demoItems = [
-  "Complete CRM-to-invoice revenue cycle",
-  "Knox AI creating jobs and scheduling in real time",
-  "Multi-option estimate builder with Conklin products",
-  "E-signature contract flow from generation to signing",
-  "Crew portal with GPS time tracking",
-  "Key Cam photo documentation and public galleries",
-  "Dashboard widgets and pipeline analytics",
-  "Multi-location HQ portal",
+  "How to track a job from first call to final payment",
+  "Knox AI creating jobs and scheduling inspections live",
+  "Building estimates with multiple options for customers",
+  "Sending contracts and getting signatures on the spot",
+  "Crew portal with GPS time tracking on any phone",
+  "Photo management and shareable customer galleries",
+  "Dashboard that shows you what needs attention today",
+  "Multi-location view for companies with more than one office",
 ];
 
 export function DemoContent() {
@@ -59,17 +59,17 @@ export function DemoContent() {
                 See Keystone OS in action
               </h1>
               <p className="mt-5 text-lg text-slate-300 leading-relaxed">
-                Get a personalized walkthrough from someone who understands roofing
-                operations. No pressure, no commitment.
+                Get a walkthrough from someone who understands roofing. We will
+                show you how the platform works for your specific situation.
+                No pressure. No commitment.
               </p>
             </div>
           </AnimateIn>
 
-          {/* Quick info cards */}
           <div className="flex flex-wrap gap-4 mt-10">
             {[
               { icon: Clock, label: "30 minutes" },
-              { icon: Monitor, label: "Live platform demo" },
+              { icon: Monitor, label: "Live walkthrough" },
               { icon: Users, label: "Tailored to your role" },
             ].map((item, i) => (
               <AnimateIn key={item.label} delay={0.2 + i * 0.1}>
@@ -109,10 +109,10 @@ export function DemoContent() {
                     <Input id="d-phone" type="tel" label="Phone" placeholder="(555) 123-4567"
                       {...register("phone")} />
                   </div>
-                  <Input id="d-crew" label="Team Size" placeholder="e.g. 5 to 10 employees"
+                  <Input id="d-crew" label="Team Size" placeholder="How many people on your team?"
                     {...register("crewSize")} />
-                  <Textarea id="d-msg" label="What are you most interested in?"
-                    placeholder="Tell us about your current setup..."
+                  <Textarea id="d-msg" label="What would you like to see?"
+                    placeholder="Tell us about how you run things today..."
                     {...register("message")} />
                   <motion.button
                     type="submit"
@@ -129,7 +129,7 @@ export function DemoContent() {
 
             <AnimateIn direction="right">
               <div>
-                <h2 className="text-2xl font-bold mb-8">What you will see</h2>
+                <h2 className="text-2xl font-bold mb-8">What we will show you</h2>
                 <StaggerContainer className="space-y-4" staggerDelay={0.06}>
                   {demoItems.map((item) => (
                     <StaggerItem key={item}>
@@ -148,14 +148,13 @@ export function DemoContent() {
                 <AnimateIn delay={0.6}>
                   <div className="mt-10 relative rounded-2xl overflow-hidden shadow-xl">
                     <Image
-                      src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80"
-                      alt="Dashboard analytics"
+                      src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&q=80"
+                      alt="Beautiful home with new roof"
                       width={800}
                       height={500}
                       className="w-full h-auto"
                       unoptimized
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
                   </div>
                 </AnimateIn>
               </div>

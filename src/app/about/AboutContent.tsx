@@ -10,27 +10,27 @@ import { Target, Lightbulb, Users, ShieldCheck } from "lucide-react";
 const values = [
   {
     icon: Target,
-    title: "Built for Roofers, by Roofers",
+    title: "Built for Roofers",
     description:
-      "Every feature, field, and workflow was designed around how roofing companies actually operate. This is not a generic CRM with a roofing skin.",
+      "Every feature was designed around how roofing companies actually work. This is not a generic business app with a roofing label on it.",
   },
   {
     icon: Lightbulb,
-    title: "AI That Actually Helps",
+    title: "Smart Tools That Save Time",
     description:
-      "Knox is not a chatbot gimmick. It understands your jobs, customers, and finances. It takes real actions and saves your team hours every week.",
+      "Knox AI handles the busywork so your team can focus on selling and installing. It creates jobs, checks weather, and keeps track of deadlines for you.",
   },
   {
     icon: Users,
-    title: "A Portal for Every Role",
+    title: "A Screen for Every Role",
     description:
-      "Sales reps, crew leads, and office managers all see different things. Purpose-built portals mean everyone gets exactly what they need.",
+      "Your sales rep does not need the same view as your crew lead. Everyone on your team gets a portal designed for exactly what they do.",
   },
   {
     icon: ShieldCheck,
-    title: "Enterprise Security from Day One",
+    title: "Your Data is Locked Down",
     description:
-      "310 Row Level Security policies, tenant isolation on every query, and audit logging. Your data is locked down at the architecture level.",
+      "Every company only sees their own data. Built-in security keeps your customer info, financials, and job details safe from day one.",
   },
 ];
 
@@ -56,7 +56,7 @@ export function AboutContent() {
                 Our Story
               </p>
               <h1 className="mt-4 text-4xl md:text-5xl font-bold text-white tracking-tight leading-tight">
-                We got tired of duct-taping our business together
+                We built the software we wished we had
               </h1>
             </div>
           </AnimateIn>
@@ -72,41 +72,35 @@ export function AboutContent() {
                 <div className="rounded-2xl overflow-hidden shadow-xl">
                   <Image
                     src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=800&q=80"
-                    alt="Construction team working together"
+                    alt="Team working together"
                     width={800}
                     height={600}
                     className="w-full h-auto"
                     unoptimized
                   />
                 </div>
-                <motion.div
-                  className="absolute -bottom-4 -left-4 bg-primary text-white rounded-xl p-4 shadow-xl"
-                  animate={{ y: [-4, 4, -4] }}
-                  transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-                >
-                  <p className="text-2xl font-bold">v1.40</p>
-                  <p className="text-xs text-amber-100">Feature complete</p>
-                </motion.div>
               </div>
             </AnimateIn>
 
             <AnimateIn direction="right">
               <div className="space-y-5 text-slate-600 leading-relaxed">
                 <p>
-                  Keystone OS started in the field. We were running a commercial
-                  roofing operation and drowning in disconnected tools. One app
-                  for CRM, another for photos, spreadsheets for invoicing, and a
-                  whiteboard for the pipeline.
+                  We started Keystone OS because we were running a roofing operation
+                  and could not find one tool that did everything. We had a CRM for
+                  leads, a separate app for photos, spreadsheets for invoicing, and
+                  a whiteboard for scheduling.
                 </p>
                 <p>
-                  When we added a second location, the whole system collapsed.
-                  Nothing talked to anything else. We were losing leads, double-entering
-                  data, and spending more time managing tools than managing the business.
+                  When we opened a second location, it all fell apart. Nothing
+                  connected. We were losing leads, entering the same data twice,
+                  and spending more time managing tools than managing the business.
                 </p>
                 <p>
-                  So we built the platform we wished existed. One system that handles
-                  lead capture, estimating, contracts, crew management, photo documentation,
-                  AI assistance, and multi-location oversight. That is Keystone OS.
+                  So we built what we needed. One platform where you can track a
+                  job from the first phone call to the final payment. Where your
+                  crews can clock in on their phones. Where your office staff
+                  can send estimates and contracts without leaving the app.
+                  That is Keystone OS.
                 </p>
               </div>
             </AnimateIn>
@@ -120,10 +114,10 @@ export function AboutContent() {
           <AnimateIn>
             <div className="text-center max-w-2xl mx-auto mb-14">
               <p className="text-sm font-semibold text-primary uppercase tracking-wider">
-                What we believe
+                What drives us
               </p>
               <h2 className="mt-3 text-3xl md:text-4xl font-bold leading-tight">
-                Principles that guide every decision
+                Built different on purpose
               </h2>
             </div>
           </AnimateIn>
@@ -149,20 +143,20 @@ export function AboutContent() {
         </div>
       </section>
 
-      {/* Numbers */}
+      {/* Numbers - user friendly */}
       <section className="py-20 md:py-28">
         <div className="mx-auto max-w-7xl px-5 sm:px-8">
           <AnimateIn>
             <div className="text-center max-w-2xl mx-auto mb-14">
-              <h2 className="text-3xl md:text-4xl font-bold">By the numbers</h2>
+              <h2 className="text-3xl md:text-4xl font-bold">What you get</h2>
             </div>
           </AnimateIn>
           <StaggerContainer className="grid grid-cols-2 md:grid-cols-4 gap-8" staggerDelay={0.1}>
             {[
-              { value: "89", label: "Database Tables" },
-              { value: "310", label: "Security Policies" },
-              { value: "21", label: "Serverless Functions" },
-              { value: "4", label: "Dedicated Portals" },
+              { value: "5+", label: "Tools Replaced" },
+              { value: "4", label: "Team Portals" },
+              { value: "10+", label: "Hours Saved Weekly" },
+              { value: "1", label: "Simple Monthly Bill" },
             ].map((stat) => (
               <StaggerItem key={stat.label}>
                 <motion.div

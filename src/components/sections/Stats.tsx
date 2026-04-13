@@ -4,12 +4,12 @@ import { motion } from "framer-motion";
 import { StaggerContainer, StaggerItem } from "@/components/ui/AnimateIn";
 
 const stats = [
-  { value: "89", label: "Database Tables" },
-  { value: "310", label: "Security Policies" },
-  { value: "21", label: "Edge Functions" },
-  { value: "32", label: "AI Commands" },
-  { value: "18", label: "Dashboard Widgets" },
-  { value: "11", label: "User Roles" },
+  { value: "5+", label: "Tools Replaced" },
+  { value: "10+", label: "Hours Saved Weekly" },
+  { value: "4", label: "Team Portals" },
+  { value: "32", label: "Smart Commands" },
+  { value: "1", label: "Monthly Bill" },
+  { value: "24/7", label: "Access Anywhere" },
 ];
 
 export function Stats() {

@@ -16,44 +16,44 @@ import {
 const highlights = [
   {
     icon: Brain,
-    title: "Knox AI Assistant",
+    title: "Smart AI Assistant",
     description:
-      "Your AI co-pilot on every page. Create jobs, update statuses, analyze photos, and get insights through natural language or 32 slash commands.",
+      "Just type what you need. Create a new job, check the weather, or get a status update without clicking through menus.",
     color: "bg-purple-50 text-purple-600",
   },
   {
     icon: ClipboardCheck,
-    title: "10-Stage Pipeline",
+    title: "Job Tracking",
     description:
-      "Drag-and-drop Kanban, table, and card views. Custom stages with target days and automatic stalled job detection.",
+      "See every job from first call to final payment. Drag and drop jobs between stages so you always know where things stand.",
     color: "bg-blue-50 text-blue-600",
   },
   {
     icon: Camera,
-    title: "Key Cam Photos",
+    title: "Photo Management",
     description:
-      "A complete CompanyCam replacement. Job-organized folders, GPS tagging, public galleries, and one-click migration.",
+      "Take photos, organize them by job, and share galleries with customers. No more digging through camera rolls.",
     color: "bg-green-50 text-green-600",
   },
   {
     icon: PenTool,
-    title: "E-Signature Contracts",
+    title: "Digital Contracts",
     description:
-      "Generate from templates, send for signing via email, capture legally binding signatures. Customers sign on their phone.",
+      "Send contracts by email. Customers sign on their phone. You get notified and start scheduling the job right away.",
     color: "bg-amber-50 text-amber-600",
   },
   {
     icon: HardHat,
-    title: "Crew and Sales Portals",
+    title: "Crew Management",
     description:
-      "Purpose-built mobile interfaces for field crews and sales reps. GPS time tracking, work orders, and cold-call mapping.",
+      "Your crews get their own app to clock in, see assignments, and upload photos from the roof. No more phone calls back and forth.",
     color: "bg-red-50 text-red-600",
   },
   {
     icon: DollarSign,
-    title: "Revenue Cycle",
+    title: "Estimates and Invoicing",
     description:
-      "Multi-option estimates, contracts, invoicing with partial payments, expense tracking, and sales commissions in one flow.",
+      "Build estimates with multiple options, send them to customers, and create invoices when the job is done. Track every dollar.",
     color: "bg-teal-50 text-teal-600",
   },
 ];
@@ -68,22 +68,21 @@ export function FeatureHighlights() {
             <div className="relative">
               <div className="relative rounded-2xl overflow-hidden shadow-2xl">
                 <Image
-                  src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&q=80"
-                  alt="Aerial view of residential rooftops"
+                  src="https://images.unsplash.com/photo-1558036117-15d82a90b9b1?w=800&q=80"
+                  alt="Beautiful residential home with new roof"
                   width={800}
                   height={600}
                   className="w-full h-auto"
                   unoptimized
                 />
               </div>
-              {/* Floating stat card */}
               <motion.div
                 className="absolute -bottom-6 -right-6 bg-white rounded-xl shadow-xl p-4 border border-slate-100"
                 animate={{ y: [-5, 5, -5] }}
                 transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
               >
                 <p className="text-2xl font-bold text-primary">4 Portals</p>
-                <p className="text-xs text-slate-500">Purpose-built per role</p>
+                <p className="text-xs text-slate-500">One for every role</p>
               </motion.div>
             </div>
           </AnimateIn>
@@ -95,12 +94,12 @@ export function FeatureHighlights() {
                 All-in-one platform
               </p>
               <h2 className="mt-3 text-3xl md:text-4xl font-bold leading-tight">
-                Everything you need to close more jobs, faster
+                Stop juggling apps. Start running your business.
               </h2>
               <p className="mt-4 text-slate-600 leading-relaxed">
-                Stop switching between five different apps. Keystone OS manages
-                your CRM, estimates, contracts, crews, photos, and finances in
-                one place.
+                Most roofing companies use one tool for leads, another for photos,
+                a spreadsheet for invoicing, and a whiteboard for scheduling.
+                Keystone OS puts it all in one place.
               </p>
             </AnimateIn>
 

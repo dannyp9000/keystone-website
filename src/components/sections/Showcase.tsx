@@ -6,19 +6,19 @@ import { AnimateIn } from "@/components/ui/AnimateIn";
 
 const items = [
   {
-    title: "Field Inspections",
-    desc: "Structured checklists, measurements, and damage documentation that flow directly into estimates",
-    img: "https://images.unsplash.com/photo-1632759145351-1d592a0c04b7?w=600&q=80",
+    title: "Roof Inspections",
+    desc: "Checklists, measurements, and damage photos that flow right into your estimates. No double entry.",
+    img: "https://images.unsplash.com/photo-1625766763788-95dcce9bf5ac?w=600&q=80",
   },
   {
-    title: "Photo Documentation",
-    desc: "Job-organized photo management with GPS tagging, folders, and shareable galleries",
+    title: "Job Photos",
+    desc: "Organize every photo by job. Share before-and-after galleries with homeowners in one click.",
     img: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=600&q=80",
   },
   {
-    title: "Crew Management",
-    desc: "GPS-verified time tracking, work orders, and a dedicated mobile portal for every crew member",
-    img: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=600&q=80",
+    title: "Crew Scheduling",
+    desc: "Assign crews, track hours with GPS, and let your team see their assignments on their phone.",
+    img: "https://images.unsplash.com/photo-1513880989635-6eb491ce7f5b?w=600&q=80",
   },
 ];
 

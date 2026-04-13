@@ -1,20 +1,59 @@
 "use client";
 
+import { useState } from "react";
 import Link from "next/link";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { AnimateIn, StaggerContainer, StaggerItem } from "@/components/ui/AnimateIn";
 import { pricingTiers } from "@/data/pricing";
-import { CheckCircle2, ArrowRight } from "lucide-react";
+import { CheckCircle2, ArrowRight, ChevronDown } from "lucide-react";
 import { CTA } from "@/components/sections/CTA";
 
 const faqs = [
-  { q: "Is there a free trial?", a: "Every plan includes a 14-day free trial with full access. No credit card required." },
-  { q: "Can I switch plans later?", a: "Upgrade or downgrade at any time. Changes take effect at the start of your next billing cycle." },
-  { q: "What happens to my data if I cancel?", a: "Your data is retained for 90 days after cancellation. Export everything at any time." },
-  { q: "Do you offer annual billing?", a: "Annual plans save 20% compared to monthly billing. Contact sales for Enterprise annual pricing." },
-  { q: "Is onboarding included?", a: "Professional includes guided onboarding. Enterprise includes a dedicated account manager and custom training." },
-  { q: "How is multi-location pricing handled?", a: "Multi-location companies use the Enterprise plan with custom pricing based on locations and users." },
+  { q: "Is there a free trial?", a: "Yes. Every plan comes with a 14-day free trial and full access to all features. You do not need a credit card to get started." },
+  { q: "Can I change my plan later?", a: "Absolutely. You can upgrade or downgrade whenever you want. The change kicks in at the start of your next billing cycle." },
+  { q: "What happens if I cancel?", a: "Your data stays safe for 90 days after you cancel. You can export everything at any time using the built-in export tool." },
+  { q: "Do you have yearly pricing?", a: "Yes. Paying yearly saves you 20 percent compared to monthly. For Enterprise plans, reach out to our sales team for a custom quote." },
+  { q: "Is setup included?", a: "Professional plans include guided onboarding to get your team up and running. Enterprise plans come with a dedicated account manager and custom training." },
+  { q: "How does pricing work for multiple locations?", a: "Companies with more than one office use the Enterprise plan. Pricing depends on the number of locations and team members. Contact us for details." },
+  { q: "Can my crew use it on their phones?", a: "Yes. The crew portal works on any phone browser and the whole platform is installable as an app. No app store download needed." },
+  { q: "Do I need to buy other tools to go with it?", a: "No. Keystone OS replaces your CRM, photo app, estimating tool, contract signing, and invoicing. It is all in one." },
 ];
+
+function FAQItem({ q, a }: { q: string; a: string }) {
+  const [open, setOpen] = useState(false);
+  return (
+    <motion.div
+      className="bg-white rounded-xl border border-slate-100 overflow-hidden shadow-sm"
+      whileHover={{ x: 2 }}
+      transition={{ duration: 0.2 }}
+    >
+      <button
+        onClick={() => setOpen(!open)}
+        className="w-full flex items-center justify-between px-6 py-5 text-left cursor-pointer"
+      >
+        <span className="font-semibold text-slate-800 pr-4">{q}</span>
+        <motion.div
+          animate={{ rotate: open ? 180 : 0 }}
+          transition={{ duration: 0.2 }}
+        >
+          <ChevronDown className="h-5 w-5 text-slate-400 shrink-0" />
+        </motion.div>
+      </button>
+      <AnimatePresence>
+        {open && (
+          <motion.div
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: "auto", opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{ duration: 0.25 }}
+          >
+            <p className="px-6 pb-5 text-sm text-slate-500 leading-relaxed">{a}</p>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </motion.div>
+  );
+}
 
 export function PricingContent() {
   return (
@@ -25,14 +64,14 @@ export function PricingContent() {
           <AnimateIn>
             <div className="text-center max-w-2xl mx-auto">
               <p className="text-sm font-semibold text-primary uppercase tracking-wider">
-                Simple Pricing
+                Pricing
               </p>
               <h1 className="mt-3 text-4xl md:text-5xl font-bold tracking-tight leading-tight">
-                One platform, three plans
+                Simple plans for every team size
               </h1>
               <p className="mt-4 text-lg text-slate-600">
-                No per-feature add-ons. No surprise charges. Pick the plan that
-                fits your team and start your 14-day free trial.
+                No hidden fees. No surprise charges. Pick the plan that fits your
+                team and try it free for 14 days.
               </p>
             </div>
           </AnimateIn>
@@ -102,25 +141,18 @@ export function PricingContent() {
         </div>
       </section>
 
-      {/* FAQ */}
+      {/* FAQ accordion */}
       <section className="py-20 bg-slate-50">
         <div className="mx-auto max-w-3xl px-5 sm:px-8">
           <AnimateIn>
             <h2 className="text-2xl md:text-3xl font-bold text-center mb-12">
-              Frequently asked questions
+              Common questions
             </h2>
           </AnimateIn>
-          <StaggerContainer className="space-y-4" staggerDelay={0.06}>
+          <StaggerContainer className="space-y-3" staggerDelay={0.05}>
             {faqs.map((faq) => (
               <StaggerItem key={faq.q}>
-                <motion.div
-                  className="bg-white rounded-xl border border-slate-100 p-6 shadow-sm"
-                  whileHover={{ x: 4 }}
-                  transition={{ duration: 0.2 }}
-                >
-                  <h3 className="font-semibold text-slate-800">{faq.q}</h3>
-                  <p className="mt-2 text-sm text-slate-500 leading-relaxed">{faq.a}</p>
-                </motion.div>
+                <FAQItem q={faq.q} a={faq.a} />
               </StaggerItem>
             ))}
           </StaggerContainer>

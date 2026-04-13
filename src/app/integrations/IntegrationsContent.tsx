@@ -57,14 +57,8 @@ export function IntegrationsContent() {
                     <div className="flex-1 min-w-0">
                       <div className="flex items-center gap-2 flex-wrap">
                         <h3 className="text-base font-semibold">{integration.name}</h3>
-                        <span
-                          className={`text-[10px] font-semibold uppercase tracking-wider px-2 py-0.5 rounded-full ${
-                            integration.status === "active"
-                              ? "bg-green-50 text-green-600"
-                              : "bg-slate-100 text-slate-500"
-                          }`}
-                        >
-                          {integration.status === "active" ? "Active" : "Partial"}
+                        <span className="text-[10px] font-semibold uppercase tracking-wider px-2 py-0.5 rounded-full bg-green-50 text-green-600">
+                          Active
                         </span>
                       </div>
                       <p className="text-xs text-slate-400 mt-0.5">{integration.category}</p>
