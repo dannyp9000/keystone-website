@@ -4,9 +4,10 @@ import { Hexagon } from "lucide-react";
 interface LogoProps {
   className?: string;
   iconOnly?: boolean;
+  light?: boolean;
 }
 
-export function Logo({ className, iconOnly = false }: LogoProps) {
+export function Logo({ className, iconOnly = false, light = false }: LogoProps) {
   return (
     <div className={cn("flex items-center gap-2", className)}>
       <div className="relative">
@@ -16,7 +17,7 @@ export function Logo({ className, iconOnly = false }: LogoProps) {
         </span>
       </div>
       {!iconOnly && (
-        <span className="text-xl font-bold tracking-tight">
+        <span className={cn("text-xl font-bold tracking-tight", light ? "text-white" : "text-foreground")}>
           Keystone<span className="text-primary">OS</span>
         </span>
       )}

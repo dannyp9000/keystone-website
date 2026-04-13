@@ -26,8 +26,13 @@ export function Navbar() {
 
   useEffect(() => {
     document.body.style.overflow = mobileOpen ? "hidden" : "";
-    return () => { document.body.style.overflow = ""; };
+    return () => {
+      document.body.style.overflow = "";
+    };
   }, [mobileOpen]);
+
+  // When not scrolled, text should be white (over dark hero images)
+  const isLight = !scrolled;
 
   return (
     <>
@@ -35,14 +40,17 @@ export function Navbar() {
         className={cn(
           "fixed top-0 left-0 right-0 z-50 transition-all duration-500",
           scrolled
-            ? "bg-white/80 backdrop-blur-xl border-b border-slate-200/50 shadow-sm"
+            ? "bg-white/90 backdrop-blur-xl border-b border-slate-200/50 shadow-sm"
             : "bg-transparent"
         )}
       >
-        <nav className="mx-auto max-w-7xl px-5 sm:px-8" aria-label="Main navigation">
+        <nav
+          className="mx-auto max-w-7xl px-5 sm:px-8"
+          aria-label="Main navigation"
+        >
           <div className="flex h-18 items-center justify-between">
             <Link href="/" aria-label="Keystone OS home" className="relative z-10">
-              <Logo />
+              <Logo light={isLight} />
             </Link>
 
             <div className="hidden lg:flex items-center gap-1">
@@ -53,7 +61,11 @@ export function Navbar() {
                   className={cn(
                     "relative px-4 py-2 text-sm font-medium rounded-full transition-all duration-300",
                     pathname === link.href
-                      ? "text-primary bg-amber-50"
+                      ? isLight
+                        ? "text-amber-300 bg-white/10"
+                        : "text-primary bg-amber-50"
+                      : isLight
+                      ? "text-white/80 hover:text-white hover:bg-white/10"
                       : "text-slate-600 hover:text-slate-900 hover:bg-slate-50"
                   )}
                 >
@@ -67,7 +79,12 @@ export function Navbar() {
                 href="https://keystones.lovable.app/login"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="px-4 py-2 text-sm font-medium text-slate-600 hover:text-slate-900 transition-colors"
+                className={cn(
+                  "px-4 py-2 text-sm font-medium transition-colors",
+                  isLight
+                    ? "text-white/80 hover:text-white"
+                    : "text-slate-600 hover:text-slate-900"
+                )}
               >
                 Sign In
               </Link>
@@ -84,13 +101,20 @@ export function Navbar() {
             </div>
 
             <motion.button
-              className="lg:hidden relative z-10 p-2 text-slate-700"
+              className={cn(
+                "lg:hidden relative z-10 p-2",
+                isLight ? "text-white" : "text-slate-700"
+              )}
               onClick={() => setMobileOpen(!mobileOpen)}
               aria-label={mobileOpen ? "Close menu" : "Open menu"}
               aria-expanded={mobileOpen}
               whileTap={{ scale: 0.9 }}
             >
-              {mobileOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+              {mobileOpen ? (
+                <X className="h-6 w-6" />
+              ) : (
+                <Menu className="h-6 w-6" />
+              )}
             </motion.button>
           </div>
         </nav>
