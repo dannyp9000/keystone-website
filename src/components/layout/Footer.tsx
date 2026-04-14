@@ -20,7 +20,10 @@ const footerLinks = {
   ],
   Platform: [
     { label: "Sign In", href: "https://keystones.lovable.app/login" },
-    { label: "Install App", href: "https://keystones.lovable.app/install" },
+  ],
+  Legal: [
+    { label: "Privacy Policy", href: "/privacy" },
+    { label: "Terms of Service", href: "/terms" },
   ],
 };
 
@@ -44,8 +47,8 @@ export function Footer() {
               <h3 className="text-2xl md:text-3xl font-bold text-white">
                 Ready to simplify your roofing business?
               </h3>
-              <p className="mt-2 text-slate-400 max-w-lg">
-                See how Keystone OS can save your team hours every week. Free 14-day trial, no credit card needed.
+              <p className="mt-2 text-slate-300 max-w-lg">
+                Book a free demo and see how Keystone OS replaces all the apps you are using today.
               </p>
             </div>
           </AnimateIn>
@@ -56,7 +59,7 @@ export function Footer() {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
-                Start Free Trial
+                Start Your Free Demo
                 <ArrowRight className="h-5 w-5" />
               </motion.span>
             </Link>
@@ -67,7 +70,7 @@ export function Footer() {
       {/* Main footer */}
       <div className="bg-slate-950">
         <div className="mx-auto max-w-7xl px-5 sm:px-8 py-14">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-10">
+          <div className="grid grid-cols-2 md:grid-cols-5 gap-10">
             <div className="col-span-2 md:col-span-1">
               <Logo light />
               <p className="mt-4 text-sm text-slate-400 leading-relaxed max-w-xs">
@@ -103,10 +106,9 @@ export function Footer() {
             <p className="text-xs text-slate-500">
               {new Date().getFullYear()} Keystone OS. All rights reserved.
             </p>
-            <div className="flex gap-6 text-xs text-slate-500">
-              <span className="hover:text-slate-300 transition-colors cursor-pointer">Privacy</span>
-              <span className="hover:text-slate-300 transition-colors cursor-pointer">Terms</span>
-            </div>
+            <p className="text-xs text-slate-500">
+              Built in Cleveland, Ohio
+            </p>
           </div>
         </div>
       </div>

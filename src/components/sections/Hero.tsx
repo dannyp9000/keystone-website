@@ -57,7 +57,7 @@ export function Hero() {
                   whileHover={{ scale: 1.04, boxShadow: "0 20px 40px rgba(217,119,6,0.3)" }}
                   whileTap={{ scale: 0.96 }}
                 >
-                  Start Free Trial
+                  Start Your Free Demo
                   <ArrowRight className="h-5 w-5" />
                 </motion.span>
               </Link>

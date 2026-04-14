@@ -31,8 +31,13 @@ export function Navbar() {
     };
   }, [mobileOpen]);
 
-  // When not scrolled, text should be white (over dark hero images)
-  const isLight = !scrolled;
+  // Pages that have a dark full-bleed hero image at the top.
+  // On these, the navbar should be white text when at the top of the page.
+  const darkHeroRoutes = ["/", "/features", "/about", "/contact", "/integrations", "/demo", "/privacy", "/terms"];
+  const hasDarkHero = darkHeroRoutes.includes(pathname);
+
+  // When at top of a dark-hero page, use light text. Otherwise use dark text.
+  const isLight = hasDarkHero && !scrolled;
 
   return (
     <>

@@ -89,8 +89,8 @@ export function KnoxAI() {
                 transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
               >
                 <Image
-                  src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=200&q=80"
-                  alt="Roofing team"
+                  src="https://images.unsplash.com/photo-1568605114967-8130f3a36994?w=200&q=80"
+                  alt="Modern home roofline"
                   width={96} height={96}
                   className="w-full h-full object-cover"
                   unoptimized

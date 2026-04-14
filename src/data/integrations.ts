@@ -4,6 +4,10 @@ import {
   Camera,
   Package,
   Brain,
+  CreditCard,
+  FileSpreadsheet,
+  Calendar,
+  Cloud,
   type LucideIcon,
 } from "lucide-react";
 
@@ -44,10 +48,38 @@ export const integrations: Integration[] = [
     category: "Roofing Supplies",
   },
   {
-    name: "AI Models",
+    name: "Knox AI",
     description:
-      "Knox, your built-in AI assistant, is powered by the latest AI models including Gemini and GPT. You do not need your own API key or any technical setup. Knox works out of the box and gets smarter over time. It handles job creation, scheduling, photo analysis, weather checks, and dozens of other tasks through simple conversation.",
+      "Knox is your built-in AI assistant powered by the latest models. You do not need your own API key or any technical setup. Knox works out of the box and gets smarter over time. It handles job creation, scheduling, photo analysis, weather checks, and dozens of other tasks through simple conversation.",
     icon: Brain,
     category: "Artificial Intelligence",
+  },
+  {
+    name: "Stripe",
+    description:
+      "Accept credit card payments directly from your invoices. Customers click a link in their invoice email, enter their card, and pay. Funds deposit to your bank account on a regular schedule. No more chasing checks or coordinating with separate payment processors.",
+    icon: CreditCard,
+    category: "Payments",
+  },
+  {
+    name: "QuickBooks",
+    description:
+      "Sync your invoices, payments, and expenses to QuickBooks Online automatically. Your accountant gets the data they need without anyone double-entering numbers. Works for both QuickBooks Online and Desktop versions.",
+    icon: FileSpreadsheet,
+    category: "Accounting",
+  },
+  {
+    name: "Google Calendar",
+    description:
+      "Push job schedules, inspections, and crew assignments to Google Calendar. Your team sees their schedule in the calendar app they already use. Two-way sync keeps things in line whether changes happen in Keystone OS or in their calendar.",
+    icon: Calendar,
+    category: "Scheduling",
+  },
+  {
+    name: "Cloud Storage",
+    description:
+      "Connect Dropbox, Google Drive, or OneDrive to back up your photos, contracts, and documents automatically. You always have a copy outside the platform, which is great for compliance and peace of mind.",
+    icon: Cloud,
+    category: "Backup",
   },
 ];

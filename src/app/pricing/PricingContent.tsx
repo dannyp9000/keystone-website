@@ -9,10 +9,9 @@ import { CheckCircle2, ArrowRight, ChevronDown } from "lucide-react";
 import { CTA } from "@/components/sections/CTA";
 
 const faqs = [
-  { q: "Is there a free trial?", a: "Yes. Every plan comes with a 14-day free trial and full access to all features. You do not need a credit card to get started." },
-  { q: "Can I change my plan later?", a: "Absolutely. You can upgrade or downgrade whenever you want. The change kicks in at the start of your next billing cycle." },
+  { q: "Can I see Keystone OS before I commit?", a: "Yes. Book a free demo and our team will walk you through the platform based on how your roofing business works today." },
+  { q: "Can I change my plan later?", a: "You can upgrade or downgrade whenever you want. The change takes effect at the start of your next billing cycle." },
   { q: "What happens if I cancel?", a: "Your data stays safe for 90 days after you cancel. You can export everything at any time using the built-in export tool." },
-  { q: "Do you have yearly pricing?", a: "Yes. Paying yearly saves you 20 percent compared to monthly. For Enterprise plans, reach out to our sales team for a custom quote." },
   { q: "Is setup included?", a: "Professional plans include guided onboarding to get your team up and running. Enterprise plans come with a dedicated account manager and custom training." },
   { q: "How does pricing work for multiple locations?", a: "Companies with more than one office use the Enterprise plan. Pricing depends on the number of locations and team members. Contact us for details." },
   { q: "Can my crew use it on their phones?", a: "Yes. The crew portal works on any phone browser and the whole platform is installable as an app. No app store download needed." },
@@ -71,7 +70,7 @@ export function PricingContent() {
               </h1>
               <p className="mt-4 text-lg text-slate-600">
                 No hidden fees. No surprise charges. Pick the plan that fits your
-                team and try it free for 14 days.
+                team and book a free demo to see it in action.
               </p>
             </div>
           </AnimateIn>

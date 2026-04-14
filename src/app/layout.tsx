@@ -17,7 +17,7 @@ export const metadata: Metadata = {
     template: "%s | Keystone OS",
   },
   description:
-    "Keystone OS is the all-in-one platform for roofing contractors. Manage leads, estimates, contracts, crews, photos, invoicing, and more from one app. Try free for 14 days.",
+    "Keystone OS is the all-in-one platform for roofing contractors. Manage leads, estimates, contracts, crews, photos, invoicing, and more from one app. Book a free demo today.",
   keywords: [
     "roofing software",
     "roofing CRM",
@@ -46,13 +46,13 @@ export const metadata: Metadata = {
     siteName: "Keystone OS",
     title: "Keystone OS | All-in-One Roofing Business Software",
     description:
-      "Manage your entire roofing business from one app. Leads, estimates, contracts, crews, photos, and invoicing. Try free for 14 days.",
+      "Manage your entire roofing business from one app. Leads, estimates, contracts, crews, photos, and invoicing. Book a free demo.",
   },
   twitter: {
     card: "summary_large_image",
     title: "Keystone OS | All-in-One Roofing Business Software",
     description:
-      "Manage your entire roofing business from one app. Try free for 14 days.",
+      "Manage your entire roofing business from one app. Book a free demo.",
   },
   alternates: {
     canonical: "https://keystoneos.com",

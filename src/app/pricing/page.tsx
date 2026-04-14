@@ -4,10 +4,10 @@ import { PricingContent } from "./PricingContent";
 export const metadata: Metadata = {
   title: "Pricing | Plans for Roofing Companies of Every Size",
   description:
-    "Simple, transparent pricing for Keystone OS. Starter, Professional, and Enterprise plans. 14-day free trial with no credit card required.",
+    "Simple, transparent pricing for Keystone OS. Starter, Professional, and Enterprise plans for roofing contractors. Book a free demo today.",
   openGraph: {
     title: "Pricing | Keystone OS Roofing Software",
-    description: "Simple plans for every team size. Try free for 14 days. No credit card required.",
+    description: "Simple plans for every team size. Book a free demo to see Keystone OS in action.",
   },
 };
 
