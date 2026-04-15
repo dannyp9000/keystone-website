@@ -107,7 +107,7 @@ export function Navbar() {
 
             <motion.button
               className={cn(
-                "lg:hidden relative z-10 p-2",
+                "lg:hidden relative z-10 -mr-3 p-3",
                 isLight ? "text-white" : "text-slate-700"
               )}
               onClick={() => setMobileOpen(!mobileOpen)}

@@ -50,7 +50,37 @@ export function Competitors() {
         </AnimateIn>
 
         <AnimateIn delay={0.2}>
-          <div className="rounded-2xl border border-slate-200 overflow-hidden bg-white shadow-sm overflow-x-auto">
+          {/* Mobile: stacked cards */}
+          <div className="block sm:hidden space-y-3">
+            {comparisons.map((row) => (
+              <div
+                key={row.feature}
+                className="rounded-xl border border-slate-200 bg-white p-4 shadow-sm"
+              >
+                <h3 className="font-semibold text-slate-900">{row.feature}</h3>
+                <div className="mt-3 flex items-center justify-between rounded-lg bg-amber-50/60 px-3 py-2">
+                  <span className="text-sm font-semibold text-primary">Keystone OS</span>
+                  <Cell value={row.keystone} />
+                </div>
+                <dl className="mt-3 grid grid-cols-2 gap-x-4 gap-y-2 text-sm text-slate-600">
+                  {[
+                    ["AccuLynx", row.acculynx],
+                    ["JobNimbus", row.jobnimbus],
+                    ["CompanyCam", row.companycam],
+                    ["Roofr", row.roofr],
+                  ].map(([name, val]) => (
+                    <div key={name as string} className="flex items-center justify-between">
+                      <dt>{name}</dt>
+                      <dd><Cell value={val as boolean} /></dd>
+                    </div>
+                  ))}
+                </dl>
+              </div>
+            ))}
+          </div>
+
+          {/* Tablet+: comparison table */}
+          <div className="hidden sm:block rounded-2xl border border-slate-200 overflow-hidden bg-white shadow-sm overflow-x-auto">
             <table className="w-full text-sm min-w-[640px]">
               <thead>
                 <tr className="border-b border-slate-100 bg-slate-50">
