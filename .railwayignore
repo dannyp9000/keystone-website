@@ -1,0 +1,8 @@
+node_modules
+.next
+_build
+.git
+.vscode
+.idea
+*.log
+.DS_Store
